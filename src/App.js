@@ -6,6 +6,7 @@ import FlexWrapper from './components/wrappers/FlexWrapper';
 import ListView from './components/ListView';
 import Sidebar from './components/Sidebar';
 import Topbar from './components/Topbar';
+import AppStartScreen from './components/AppStartScreen';
 
 const App = () => {
     return (
@@ -19,6 +20,7 @@ const App = () => {
                         <ListView />
                     </FlexWrapper>
                 </FlexWrapper>
+                <AppStartScreen />
             </main>
             <Footer />
         </MaxWidthWrapper>

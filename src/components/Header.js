@@ -2,6 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import { DESKTOP_BREAKPOINT } from '../constants';
 import { PAGE_TITLE } from '../constants';
+import Logotype from './Logotype';
 
 const StyledHeader = styled('header')`
     margin: 40px 0 24px;
@@ -22,22 +23,10 @@ const HiddenH1 = styled('h1')`
     width: 1px;
 `;
 
-const Logotype = styled('img')`
-    height: 24px;
-    width: auto;
-
-    @media (min-width: ${ DESKTOP_BREAKPOINT }) {
-        height: 40px;
-    }
-`;
-
 const Header = () => (
     <StyledHeader>
         <HiddenH1>{ PAGE_TITLE }</HiddenH1>
-        <Logotype
-            src="./icons/logotype.svg"
-            alt={ PAGE_TITLE }
-        />
+        <Logotype color="black" />
     </StyledHeader>
 );
 

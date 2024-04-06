@@ -22,6 +22,11 @@ export const PRICE_RANGE_FILTER_LEGEND = "Price range";
 export const GITHUB_LINK_URL = "https://github.com/TuukkaTerio/munchies";
 export const GITHUB_LINK_TEXT = "github.com";
 
+// App Start Screen
+export const APP_START_SCREEN_HEADING = "Treat yourself.";
+export const APP_START_SCREEN_PARAGRAPH = "Find the best restaurants in your city and get it delivered to your place!";
+export const CONTINUE = "Continue";
+
 // --------------------------------------------------------------
 // Constants for styling
 // --------------------------------------------------------------
