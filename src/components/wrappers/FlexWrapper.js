@@ -10,7 +10,7 @@ const Wrapper = styled('div')`
 
     @media (min-width: ${ DESKTOP_BREAKPOINT }) {
         flex-direction: ${ ({ $useFlexDirectionColumn }) => $useFlexDirectionColumn ? 'column' : 'row' };
-        gap: 20px;
+        gap: ${ ({ $useFlexDirectionColumn }) => $useFlexDirectionColumn ? '40px' : '20px' };
     }
 `;
 

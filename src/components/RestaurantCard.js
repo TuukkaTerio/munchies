@@ -4,15 +4,19 @@ import {
     IS_OPEN,
     IS_CLOSED,
     DELIVERY_TIME_UNIT,
+    GENERIC_IS_CLOSED_INFORMATION,
+    DESKTOP_BREAKPOINT
 } from '../constants';
 import {
     COLOR_BLACK,
     COLOR_WHITE,
+    COLOR_OFF_WHITE,
     COLOR_GREY,
     COLOR_BOX_SHADOW_GREY,
     COLOR_GREEN,
     COLOR_GREEN_DARK,
-    COLOR_TRANSPARENT
+    COLOR_TRANSPARENT,
+    COLOR_OVERLAY_WHITE
 } from '../colors';
 import { isSet } from '../helpers.js';
 import LinkWrapper from './wrappers/LinkWrapper';
@@ -90,6 +94,10 @@ const BadgesWrapper = styled('div')`
     position: absolute;
     top: 16px;
     z-index: 1;
+
+    @media (min-width: ${ DESKTOP_BREAKPOINT }) {
+        gap: 8px;
+    }
 `;
 
 const IsOpenIndicator = styled('span')`
@@ -103,6 +111,34 @@ const IsOpenIndicator = styled('span')`
 
 const IsClosedIndicator = styled(IsOpenIndicator)`
     background-color: ${ COLOR_BLACK };
+`;
+
+const Overlay = styled('div')`
+    align-items: center;
+    background-color: ${ COLOR_OVERLAY_WHITE };
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 0;
+`;
+
+const OverlayText = styled('p')`
+    background-color: ${ COLOR_OFF_WHITE };
+    border: 0.6px solid ${ COLOR_GREY };
+    border-radius: 4px;
+    box-shadow:
+        -4px 2px 10px 0px ${ COLOR_BOX_SHADOW_GREY },
+        -16px 9px 18px 0px ${ COLOR_BOX_SHADOW_GREY },
+        -35px 20px 24px 0px ${ COLOR_TRANSPARENT },
+        -63px 36px 29px 0px ${ COLOR_TRANSPARENT },
+        -98px 56px 32px 0px ${ COLOR_TRANSPARENT };
+    font-size: 12px;
+    line-height: 12px;
+    padding: 8px 10px;
 `;
 
 const RestaurantCard = ({
@@ -124,7 +160,7 @@ const RestaurantCard = ({
                         {isOpen ? <IsOpenIndicator /> : <IsClosedIndicator />}
                         {isOpen ? IS_OPEN : IS_CLOSED}
                     </Badge>
-                    { isSet(deliveryTimeMinutes) && (
+                    { isSet(deliveryTimeMinutes) && isOpen && (
                         <Badge>
                             { `${deliveryTimeMinutes} ${DELIVERY_TIME_UNIT}` }
                         </Badge>
@@ -140,6 +176,13 @@ const RestaurantCard = ({
                     />
                 ) }
                 <ArrowIcon />
+                {!isOpen && (
+                    <Overlay>
+                        <OverlayText>
+                            { GENERIC_IS_CLOSED_INFORMATION }
+                        </OverlayText>
+                    </Overlay>
+                )}
             </Wrapper>
         </LinkWrapper>
 	);

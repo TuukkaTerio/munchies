@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { DESKTOP_BREAKPOINT } from '../constants';
 import { isSet } from '../helpers';
 
 const StyledHeading = styled('div')`
@@ -10,8 +11,13 @@ const StyledHeading = styled('div')`
     margin: 0;
 
     &.h1 {
-        font-size: 40px;
-        line-height: 40px;
+        font-size: 20px;
+        line-height: 20px;
+
+        @media (min-width: ${ DESKTOP_BREAKPOINT }) {
+            font-size: 40px;
+            line-height: 40px;
+        }
     }
 `;
 

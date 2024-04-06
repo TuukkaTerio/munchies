@@ -13,12 +13,13 @@ const Grid = styled('ul')`
     flex-direction: column;
     gap: 20px;
     list-style: none;
-    margin: 32px 0 0;
+    margin: 20px 0 0;
     padding: 0;
 
     @media (min-width: ${ DESKTOP_BREAKPOINT }) {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
+        margin-top: 32px;
     }
 `;
 
