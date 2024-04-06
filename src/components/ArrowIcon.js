@@ -8,6 +8,7 @@ const StyledArrow = styled('div')`
     border-radius: 50%;
     cursor: pointer;
     display: inline-block;
+    flex: none;
     transition: background-color 0.3s ease;
     height: 32px;
     width: 32px;

@@ -3,6 +3,13 @@
     src: local('SF Pro'), url(./fonts/SF-Pro.ttf) format('truetype');
 }
 
+html,
+body {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
 body {
     margin: 0;
     font-family: 'SF Pro', 'Helvetica Neue', sans-serif;

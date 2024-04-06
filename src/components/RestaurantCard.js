@@ -14,6 +14,7 @@ import {
     COLOR_GREEN_DARK,
     COLOR_TRANSPARENT
 } from '../colors';
+import { isSet } from '../helpers.js';
 import LinkWrapper from './wrappers/LinkWrapper';
 import Heading from '../elements/Heading';
 import Badge from './Badge';
@@ -88,6 +89,7 @@ const BadgesWrapper = styled('div')`
     left: 16px;
     position: absolute;
     top: 16px;
+    z-index: 1;
 `;
 
 const IsOpenIndicator = styled('span')`
@@ -116,17 +118,27 @@ const RestaurantCard = ({
 	return (
         <LinkWrapper href={ restaurantUrl }>
             <Wrapper style={{ animationDelay: `${animationIndex * 0.2}s` }}>
-                <Heading content={ name } semanticLevel={ 3 } />
+                { isSet(name) && <Heading content={ name } semanticLevel={ 3 } /> }
                 <BadgesWrapper>
                     <Badge>
                         {isOpen ? <IsOpenIndicator /> : <IsClosedIndicator />}
                         {isOpen ? IS_OPEN : IS_CLOSED}
                     </Badge>
-                    <Badge>
-                        { `${deliveryTimeMinutes} ${DELIVERY_TIME_UNIT}` }
-                    </Badge>
+                    { isSet(deliveryTimeMinutes) && (
+                        <Badge>
+                            { `${deliveryTimeMinutes} ${DELIVERY_TIME_UNIT}` }
+                        </Badge>
+                    )}
                 </BadgesWrapper>
-                <Image className="restaurant-img" src={ imageUrl } alt={ name } width="140" height="140" />
+                { isSet(imageUrl) && (
+                    <Image
+                        className="restaurant-img"
+                        src={ imageUrl }
+                        alt={ name }
+                        width="140"
+                        height="140"
+                    />
+                ) }
                 <ArrowIcon />
             </Wrapper>
         </LinkWrapper>

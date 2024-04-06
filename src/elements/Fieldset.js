@@ -16,9 +16,9 @@ const StyledFieldset = styled('fieldset')`
 
 const FlexWrapper = styled('div')`
     display: flex;
-    flex-direction: ${ ({ useFlexDirectionColumn }) => useFlexDirectionColumn ? 'column' : 'row' };
+    flex-direction: ${ ({ $useFlexDirectionColumn }) => $useFlexDirectionColumn ? 'column' : 'row' };
     flex-wrap: wrap;
-    gap: ${ ({ customGap }) => customGap ? customGap : '8px' };
+    gap: ${ ({ $customGap }) => $customGap ? $customGap : '8px' };
 `;
 
 const Fieldset = ({ legend, groupName, inputFields, customGap, useFlexDirectionColumn }) => (

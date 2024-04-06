@@ -1,9 +1,13 @@
 import React from 'react';
 import styled from "styled-components";
-import { COLOR_GREY } from '../colors';
+import {
+    COLOR_WHITE,
+    COLOR_GREY
+} from '../colors';
 
 const Wrapper = styled('p')`
     align-items: center;
+    background-color: ${ COLOR_WHITE };
     border: 0.6px solid ${ COLOR_GREY };
     border-radius: 88px;
     display: flex;

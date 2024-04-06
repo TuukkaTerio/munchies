@@ -17,3 +17,6 @@ export const PRICE_RANGE_FILTER_LEGEND = "Price range";
 // --------------------------------------------------------------
 
 export const DESKTOP_BREAKPOINT = "1201px";
+export const SIDEBAR_WIDTH = "239px";
+export const PAGE_SIDE_PADDING = "24px";
+export const SIDEBAR_AND_LIST_VIEW_GAP = "20px";

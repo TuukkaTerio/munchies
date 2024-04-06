@@ -11,7 +11,8 @@ import {
     CATEGORY_FILTER_LEGEND,
     DELIVERY_TIME_FILTER_LEGEND,
     PRICE_RANGE_FILTER_LEGEND,
-    DESKTOP_BREAKPOINT
+    DESKTOP_BREAKPOINT,
+    SIDEBAR_WIDTH
 } from '../constants';
 import { isSet } from '../helpers.js';
 import Heading from '../elements/Heading';
@@ -52,7 +53,7 @@ const Wrapper = styled('section')`
             -63px 36px 29px 0px ${ COLOR_TRANSPARENT },
             -98px 56px 32px 0px ${ COLOR_TRANSPARENT };
         padding: 24px;
-        width: 239px;
+        width: ${ SIDEBAR_WIDTH };
     }
 `;
 

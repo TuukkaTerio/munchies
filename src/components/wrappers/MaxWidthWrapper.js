@@ -1,15 +1,21 @@
 import React from 'react';
 import styled from "styled-components";
-import { DESKTOP_BREAKPOINT } from '../../constants';
+import {
+    DESKTOP_BREAKPOINT,
+    PAGE_SIDE_PADDING
+} from '../../constants';
 
 const Wrapper = styled('div')`
-    box-sizing: content-box;
-    margin: 40px auto 0;
-    max-width: 1440px;
-    padding: 0 24px;
+    box-sizing: border-box;
+    margin: 40px auto 24px;
+    max-width: 100vw;
+    overflow-x: hidden;
+    padding: 0 ${ PAGE_SIDE_PADDING };
+    width: 100%;
 
     @media (min-width: ${ DESKTOP_BREAKPOINT }) {
         margin-top: 56px;
+        max-width: 1440px;
     }
 `;
 

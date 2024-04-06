@@ -3,13 +3,17 @@ import MaxWidthWrapper from './components/wrappers/MaxWidthWrapper';
 import FlexWrapper from './components/wrappers/FlexWrapper';
 import ListView from './components/ListView';
 import Sidebar from './components/Sidebar';
+import Topbar from './components/Topbar';
 
 const App = () => {
     return (
         <MaxWidthWrapper>
             <FlexWrapper>
                 <Sidebar />
-                <ListView />
+                <FlexWrapper useFlexDirectionColumn>
+                    <Topbar />
+                    <ListView />
+                </FlexWrapper>
             </FlexWrapper>
         </MaxWidthWrapper>
     );
