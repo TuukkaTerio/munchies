@@ -8,7 +8,7 @@ import {
 import {
     COLOR_BLACK,
     COLOR_WHITE,
-    COLOR_BORDER_GREY,
+    COLOR_GREY,
     COLOR_BOX_SHADOW_GREY,
     COLOR_GREEN,
     COLOR_GREEN_DARK,
@@ -25,7 +25,7 @@ const Wrapper = styled('article')`
     animation-duration: 1s;
     animation-fill-mode: both;
     background-color: ${ COLOR_WHITE };
-    border: 0.6px solid ${ COLOR_BORDER_GREY };
+    border: 0.6px solid ${ COLOR_GREY };
     border-radius: 8px;
     box-shadow:
         -4px 2px 10px 0px ${ COLOR_BOX_SHADOW_GREY },

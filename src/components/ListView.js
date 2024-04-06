@@ -4,6 +4,10 @@ import { LIST_VIEW_HEADING, DESKTOP_BREAKPOINT } from '../constants';
 import Heading from '../elements/Heading';
 import RestaurantCard from './RestaurantCard';
 
+const StyledSection = styled('section')`
+    width: 100%;
+`;
+
 const Grid = styled('ul')`
     display: flex;
     flex-direction: column;
@@ -87,7 +91,7 @@ const ListView = () => {
     ];
 
     return (
-        <section>
+        <StyledSection>
             <Heading
                 content={ LIST_VIEW_HEADING }
                 semanticLevel={ 2 }
@@ -108,7 +112,7 @@ const ListView = () => {
                     </li>
                 )) }
             </Grid>
-        </section>
+        </StyledSection>
     );
 }
 
