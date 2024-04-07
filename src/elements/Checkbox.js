@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { addFilter, removeFilter } from '../store/activeFiltersSlice';
 import styled from "styled-components";
 import {
     COLOR_WHITE,
@@ -7,17 +9,13 @@ import {
     COLOR_BOX_SHADOW_GREY,
     COLOR_TRANSPARENT
 } from '../colors';
-import { isSet } from '../helpers.js';
-
-const Wrapper = styled('div')`
-    input[type="checkbox"]:checked ~ label {
-        background-color: ${ COLOR_BLACK };
-        color: ${ COLOR_WHITE };
-    }
-`;
+import {
+    isSet,
+    checkIfFilterIsActive
+} from '../helpers.js';
 
 const StyledLabel = styled('label')`
-    background-color: ${ COLOR_WHITE };
+    background-color: ${ ({ $isChecked }) => $isChecked ? COLOR_BLACK : COLOR_WHITE };
     border: 0.6px solid ${ COLOR_GREY };
     border-radius: 8px;
     box-shadow:
@@ -27,7 +25,7 @@ const StyledLabel = styled('label')`
         -63px 36px 29px 0px ${ COLOR_TRANSPARENT },
         -98px 56px 32px 0px ${ COLOR_TRANSPARENT };
     box-sizing: border-box;
-    color: ${ COLOR_BLACK };
+    color: ${ ({ $isChecked }) => $isChecked ? COLOR_WHITE : COLOR_BLACK };
     cursor: pointer;
     display: inline-block;
     font-size: ${ ({ $hasImage }) => $hasImage ? '14px' : '12px' };
@@ -42,7 +40,7 @@ const StyledLabel = styled('label')`
     width: ${ ({ $hasImage }) => $hasImage ? '160px' : 'auto' };
 
     &:hover {
-        background-color: ${ COLOR_GREY };
+        background-color: ${ ({ $isChecked }) => $isChecked ? COLOR_BLACK : COLOR_GREY };
     }
 `;
 
@@ -65,23 +63,32 @@ const Image = styled('img')`
 `;
 
 const Checkbox = ({ name, id, label, value, imageUrl }) => {
+    const dispatch = useDispatch();
+    const activeFilters = useSelector(state => state.activeFilters || []);
+    const [isChecked, setIsChecked] = useState(false);
     const hasImage = isSet(imageUrl);
 
-    const handleChange = (e) => {
-        // TODO: Add real functionality
-        alert(`Toggle filter: ${ e.target.name }, value: ${ e.target.value }`);
+    const toggleFilter = (event) => {
+        const filterName = event.target?.name;
+        const filterValue = event.target?.value;
+        dispatch(isChecked ? removeFilter({ value: filterValue }) : addFilter({ name: filterName, value: filterValue }));
     };
 
+    useEffect(() => {
+        setIsChecked(checkIfFilterIsActive(value, activeFilters));
+    }, [activeFilters, value, name]);
+
     return (
-        <Wrapper>
+        <>
             <StyledInput
                 type="checkbox"
                 name={ name }
                 id={ id }
                 value={ value }
-                onChange={ (e) => handleChange(e) }
+                defaultChecked={ isChecked }
+                onChange={ (event) => toggleFilter(event) }
             />
-            <StyledLabel htmlFor={ id } $hasImage={ hasImage }>
+            <StyledLabel htmlFor={ id } $hasImage={ hasImage } $isChecked={ isChecked }>
                 { label }
                 { hasImage && (
                     <Image
@@ -92,7 +99,7 @@ const Checkbox = ({ name, id, label, value, imageUrl }) => {
                     />
                 ) }
             </StyledLabel>
-        </Wrapper>
+        </>
     );
 };
 

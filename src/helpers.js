@@ -117,3 +117,8 @@ export function transformCategoryFilters(categoryFilters) {
         value: filter.id
     }));
 }
+
+// Check if a filter is active.
+export function checkIfFilterIsActive(filterValue, activeFilters) {
+    return activeFilters.some(filter => filter.value === filterValue);
+}
