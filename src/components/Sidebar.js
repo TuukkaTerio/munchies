@@ -15,7 +15,10 @@ import {
     DESKTOP_BREAKPOINT,
     SIDEBAR_WIDTH
 } from '../constants';
-import { isSet } from '../helpers.js';
+import {
+    isSet,
+    getDeliveryTimeFilters
+} from '../helpers.js';
 import Heading from '../elements/Heading';
 import Fieldset from '../elements/Fieldset';
 
@@ -59,26 +62,9 @@ const Wrapper = styled('section')`
 `;
 
 const Sidebar = () => {
-    const categoryFilters = useSelector(state => state.filters);
-
-    const deliveryTimeFilters = [
-        {
-            name: "20 min",
-            value: "20"
-        },
-        {
-            name: "30 min",
-            value: "30"
-        },
-        {
-            name: "45 min",
-            value: "45"
-        },
-        {
-            name: "60 min",
-            value: "60"
-        },
-    ];
+    const restaurants = useSelector(state => state.restaurants || []);
+    const categoryFilters = useSelector(state => state.filters || []);
+    const deliveryTimeFilters = getDeliveryTimeFilters(restaurants);
 
     const priceRangeFilters = [
         {

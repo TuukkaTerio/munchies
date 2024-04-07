@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
+import { isSet } from '../helpers.js';
 import Legend from './Legend';
 import Checkbox from './Checkbox';
 
@@ -21,21 +22,27 @@ const FlexWrapper = styled('div')`
     gap: ${ ({ $customGap }) => $customGap ? $customGap : '8px' };
 `;
 
-const Fieldset = ({ legend, groupName, inputFields, customGap, useFlexDirectionColumn }) => (
-    <StyledFieldset>
-        <Legend text={ legend } />
-        <FlexWrapper $customGap={ customGap } $useFlexDirectionColumn={ useFlexDirectionColumn } >
-            { (inputFields || []).map((inputField, index) => (
-                <Checkbox
-                    key={ `${index}-${inputField.value}` }
-                    name={ groupName }
-                    id={ inputField.name }
-                    label={ inputField.name }
-                    value={ inputField.value }
-                />
-            )) }
-        </FlexWrapper>
-    </StyledFieldset>
-);
+const Fieldset = ({ legend, groupName, inputFields, customGap, useFlexDirectionColumn }) => {
+    if (!isSet(inputFields)) {
+        return null;
+    }
+
+    return (
+        <StyledFieldset>
+            {isSet(legend) && <Legend text={ legend } />}
+            <FlexWrapper $customGap={ customGap } $useFlexDirectionColumn={ useFlexDirectionColumn } >
+                { (inputFields || []).map((inputField, index) => (
+                    <Checkbox
+                        key={ `${index}-${inputField.value}` }
+                        name={ groupName }
+                        id={ inputField.name }
+                        label={ inputField.name }
+                        value={ inputField.value }
+                    />
+                )) }
+            </FlexWrapper>
+        </StyledFieldset>
+    );
+};
 
 export default Fieldset;
