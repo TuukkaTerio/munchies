@@ -8,7 +8,7 @@ const Wrapper = styled('p')`
     flex-wrap: wrap-reverse;
     font-size: 24px;
     gap: 8px;
-    height: 50vh;
+    height: ${ ({ $height }) => $height ? $height : 'auto' };
     line-height: 24px;
     justify-content: center;
     text-align: center;
@@ -84,8 +84,8 @@ const AnimatedEllipsis = styled('span')`
     }
 `;
 
-const Loader = ({ children }) => (
-    <Wrapper>
+const Loader = ({ children, height }) => (
+    <Wrapper $height={ height }>
         { children }
         <AnimatedEllipsis>
             <span />

@@ -15,6 +15,10 @@ export const IS_CLOSED = "Closed";
 export const DELIVERY_TIME_UNIT = "min";
 export const GENERIC_IS_CLOSED_INFORMATION = "Opens tomorrow at 12 pm";
 
+// Topbar
+export const LOADING_CATEGORY_FILTERS = "Loading categories";
+export const COULD_NOT_GET_CATEGORY_FILTERS = "No categories found :( Please try again later.";
+
 // Sidebar / Filter
 export const SIDE_BAR_HEADING = "Filter";
 export const CATEGORY_FILTER_LEGEND = "Food category";

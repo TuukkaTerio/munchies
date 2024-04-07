@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchCategoryFilters } from '../services/api';
 import styled from "styled-components";
 import {
     CATEGORY_FILTER_LEGEND,
     SIDEBAR_WIDTH,
     PAGE_SIDE_PADDING,
     DESKTOP_BREAKPOINT,
-    SIDEBAR_AND_LIST_VIEW_GAP
+    SIDEBAR_AND_LIST_VIEW_GAP,
+    LOADING_CATEGORY_FILTERS,
+    COULD_NOT_GET_CATEGORY_FILTERS
 } from '../constants';
+import { isSet } from '../helpers.js';
 import Checkbox from '../elements/Checkbox';
+import Loader from './Loader';
+import ErrorMessage from './ErrorMessage';
 
 const StyledFieldset = styled('fieldset')`
     border: none;
@@ -60,62 +67,48 @@ const ScrollWrapper = styled('div')`
 `;
 
 const Sidebar = () => {
-    // TODO: Fetch filters from the API
-    const categoryFilters = [
-        {
-            "id": "6521e1ee-cf8c-4143-8c80-21e3bda48b2e",
-            "name": "Hamburger",
-            "image_url": "/images/hamburger.png"
-        },
-        {
-            "id": "be554e59-7c10-442e-a032-2200a6b0d2cf",
-            "name": "Pizza",
-            "image_url": "/images/pizza.png"
-        },
-        {
-            "id": "e7e09166-65ed-457b-944b-d7b1e6b229db",
-            "name": "Taco's",
-            "image_url": "/images/taco.png"
-        },
-        {
-            "id": "d61a08aa-5e53-4500-a229-f69b1f824605",
-            "name": "Coffee",
-            "image_url": "/images/coffee.png"
-        },
-        {
-            "id": "74c2878b-d520-4cee-ac42-e21f8b088441",
-            "name": "Burrito",
-            "image_url": "/images/burrito.png"
-        },
-        {
-            "id": "d4dad40a-bdba-43fe-8ebb-56372e37a450",
-            "name": "Fries",
-            "image_url": "/images/fries.png"
-        },
-        {
-            "id": "b8083ed1-389e-41a7-9cee-a9fe6ed91121",
-            "name": "Breakfast",
-            "image_url": "/images/breakfast.png"
+    const dispatch = useDispatch();
+    const [categoryFilters, setCategoryFilters] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
+
+    useEffect(() => {
+        setLoading(true);
+        async function fetchCategoryFiltersData() {
+            try {
+                const categoryFiltersData = await fetchCategoryFilters();
+                setCategoryFilters(categoryFiltersData?.filters || []);
+                setLoading(false);
+            } catch (error) {
+                setError(true);
+                setLoading(false);
+            }
         }
-    ];
+
+        fetchCategoryFiltersData();
+    }, [dispatch]);
 
     return (
         <StyledFieldset>
             <HiddenLegend>{ CATEGORY_FILTER_LEGEND }</HiddenLegend>
-            <BleedWrapper>
-                <ScrollWrapper>
-                    { (categoryFilters || []).map((categoryFilter, index) => (
-                        <Checkbox
-                            key={ `${index}-${categoryFilter.id}` }
-                            name="topbar-category"
-                            id={ `topbar-category-${categoryFilter.name}` }
-                            label={ categoryFilter.name }
-                            value={ categoryFilter.id }
-                            imageUrl={ categoryFilter.image_url }
-                        />
-                    )) }
-                </ScrollWrapper>
-            </BleedWrapper>
+            { loading && <Loader>{ LOADING_CATEGORY_FILTERS }</Loader> }
+            { error && <ErrorMessage>{ COULD_NOT_GET_CATEGORY_FILTERS }</ErrorMessage> }
+            { !loading && !error && isSet(categoryFilters) && (
+                <BleedWrapper>
+                    <ScrollWrapper>
+                        { categoryFilters.map((categoryFilter, index) => (
+                            <Checkbox
+                                key={ `${index}-${categoryFilter.id}` }
+                                name="topbar-category"
+                                id={ `topbar-category-${categoryFilter.name}` }
+                                label={ categoryFilter.name }
+                                value={ categoryFilter.id }
+                                imageUrl={ categoryFilter.image_url }
+                            />
+                        )) }
+                    </ScrollWrapper>
+                </BleedWrapper>
+            )}
         </StyledFieldset>
     );
 };

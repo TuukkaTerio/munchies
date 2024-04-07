@@ -64,8 +64,8 @@ const ListView = () => {
                 semanticLevel={ 2 }
                 styleLevel={ 1 }
             />
-            { loading && <Loader>{ LOADING_RESTAURANTS }</Loader> }
-            { error && <ErrorMessage>{ COULD_NOT_GET_RESTAURANTS }</ErrorMessage> }
+            { loading && <Loader height="50vh">{ LOADING_RESTAURANTS }</Loader> }
+            { error && <ErrorMessage height="50vh">{ COULD_NOT_GET_RESTAURANTS }</ErrorMessage> }
             { !loading && !error && isSet(restaurants) && (
                 <Grid>
                     { restaurants.map((restaurant, index) => (

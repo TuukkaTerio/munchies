@@ -12,3 +12,16 @@ export async function fetchRestaurants() {
         throw error;
     }
 }
+
+export async function fetchCategoryFilters() {
+    try {
+        const response = await fetch(`${BASE_URL}/filter`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch category filters');
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching category filters:', error);
+        throw error;
+    }
+}
