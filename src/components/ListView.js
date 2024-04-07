@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { fetchRestaurants } from '../services/api';
 import { addRestaurants } from '../store/restaurantsSlice';
 import styled from "styled-components";
@@ -9,7 +9,10 @@ import {
     LOADING_RESTAURANTS,
     COULD_NOT_GET_RESTAURANTS
 } from '../constants';
-import { isSet } from '../helpers.js';
+import {
+    isSet,
+    filterRestaurants
+} from '../helpers.js';
 import Heading from '../elements/Heading';
 import RestaurantCard from './RestaurantCard';
 import Loader from './Loader';
@@ -36,7 +39,9 @@ const Grid = styled('ul')`
 
 const ListView = () => {
     const dispatch = useDispatch();
+    const activeFilters = useSelector(state => state.activeFilters || []);
     const [restaurants, setRestaurants] = useState([]);
+    const [filteredRestaurants, setFilteredRestaurants] = useState(restaurants);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
@@ -57,6 +62,10 @@ const ListView = () => {
         fetchRestaurantsData();
     }, [dispatch]);
 
+    useEffect(() => {
+        setFilteredRestaurants(filterRestaurants(restaurants, activeFilters));
+    }, [activeFilters, restaurants]);
+
     return (
         <StyledSection>
             <Heading
@@ -66,9 +75,9 @@ const ListView = () => {
             />
             { loading && <Loader height="50vh">{ LOADING_RESTAURANTS }</Loader> }
             { error && <ErrorMessage height="50vh">{ COULD_NOT_GET_RESTAURANTS }</ErrorMessage> }
-            { !loading && !error && isSet(restaurants) && (
+            { !loading && !error && isSet(filteredRestaurants) && (
                 <Grid>
-                    { restaurants.map((restaurant, index) => (
+                    { filteredRestaurants.map((restaurant, index) => (
                         <li key={ `${index}-${restaurant.id}` }>
                             <RestaurantCard
                                 id={ restaurant.id }

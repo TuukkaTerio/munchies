@@ -22,7 +22,7 @@ const FlexWrapper = styled('div')`
     gap: ${ ({ $customGap }) => $customGap ? $customGap : '8px' };
 `;
 
-const Fieldset = ({ legend, groupName, inputFields, customGap, useFlexDirectionColumn }) => {
+const Fieldset = ({ legend, groupName, filterName, inputFields, customGap, useFlexDirectionColumn }) => {
     if (!isSet(inputFields)) {
         return null;
     }
@@ -31,10 +31,11 @@ const Fieldset = ({ legend, groupName, inputFields, customGap, useFlexDirectionC
         <StyledFieldset>
             {isSet(legend) && <Legend text={ legend } />}
             <FlexWrapper $customGap={ customGap } $useFlexDirectionColumn={ useFlexDirectionColumn } >
-                { (inputFields || []).map((inputField, index) => (
+                { inputFields.map((inputField, index) => (
                     <Checkbox
                         key={ `${index}-${inputField.value}` }
-                        name={ groupName }
+                        filterName={ filterName }
+                        groupName={ groupName ? groupName : filterName }
                         id={ inputField.name }
                         label={ inputField.name }
                         value={ inputField.value }

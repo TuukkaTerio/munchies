@@ -97,7 +97,7 @@ const Sidebar = () => {
                     <Fieldset
                         useFlexDirectionColumn
                         legend={ CATEGORY_FILTER_LEGEND }
-                        groupName="category"
+                        filterName="category"
                         inputFields={ categoryFilters }
                         customGap="10px"
                     />
@@ -106,7 +106,7 @@ const Sidebar = () => {
             { isSet(deliveryTimeFilters) && (
                 <Fieldset
                     legend={ DELIVERY_TIME_FILTER_LEGEND }
-                    groupName="delivery-time"
+                    filterName="delivery-time"
                     inputFields={ deliveryTimeFilters }
                 />
             ) }
@@ -114,7 +114,7 @@ const Sidebar = () => {
                 { isSet(priceRangeFilters) && (
                     <Fieldset
                         legend={ PRICE_RANGE_FILTER_LEGEND }
-                        groupName="price-range"
+                        filterName="price-range"
                         inputFields={ priceRangeFilters }
                     />
                 ) }

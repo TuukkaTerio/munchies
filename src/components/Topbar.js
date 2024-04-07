@@ -101,7 +101,8 @@ const Topbar = () => {
                         { categoryFilters.map((categoryFilter, index) => (
                             <Checkbox
                                 key={ `${index}-${categoryFilter.id}` }
-                                name="topbar-category"
+                                filterName="category"
+                                groupName="topbar-category"
                                 id={ `topbar-category-${categoryFilter.name}` }
                                 label={ categoryFilter.name }
                                 value={ categoryFilter.id }

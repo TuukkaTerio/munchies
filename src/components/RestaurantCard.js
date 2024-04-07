@@ -171,12 +171,12 @@ const RestaurantCard = ({
                 { isSet(name) && <Heading content={ name } semanticLevel={ 3 } /> }
                 <BadgesWrapper>
                     <Badge>
-                        {isOpen ? <IsOpenIndicator /> : <IsClosedIndicator />}
-                        {isOpen ? IS_OPEN : IS_CLOSED}
+                        { isOpen ? <IsOpenIndicator /> : <IsClosedIndicator /> }
+                        { isOpen ? IS_OPEN : IS_CLOSED }
                     </Badge>
                     { isSet(deliveryTimeMinutes) && isOpen && (
                         <Badge>
-                            { `${deliveryTimeMinutes} ${DELIVERY_TIME_UNIT}` }
+                            { `${ deliveryTimeMinutes } ${ DELIVERY_TIME_UNIT }` }
                         </Badge>
                     )}
                 </BadgesWrapper>

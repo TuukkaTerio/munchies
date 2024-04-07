@@ -62,27 +62,26 @@ const Image = styled('img')`
     user-select: none;
 `;
 
-const Checkbox = ({ name, id, label, value, imageUrl }) => {
+const Checkbox = ({ groupName, filterName, id, label, value, imageUrl }) => {
     const dispatch = useDispatch();
     const activeFilters = useSelector(state => state.activeFilters || []);
     const [isChecked, setIsChecked] = useState(false);
     const hasImage = isSet(imageUrl);
 
     const toggleFilter = (event) => {
-        const filterName = event.target?.name;
         const filterValue = event.target?.value;
         dispatch(isChecked ? removeFilter({ value: filterValue }) : addFilter({ name: filterName, value: filterValue }));
     };
 
     useEffect(() => {
         setIsChecked(checkIfFilterIsActive(value, activeFilters));
-    }, [activeFilters, value, name]);
+    }, [activeFilters, value]);
 
     return (
         <>
             <StyledInput
                 type="checkbox"
-                name={ name }
+                name={ groupName }
                 id={ id }
                 value={ value }
                 defaultChecked={ isChecked }
@@ -93,7 +92,7 @@ const Checkbox = ({ name, id, label, value, imageUrl }) => {
                 { hasImage && (
                     <Image
                         src={ imageUrl }
-                        alt={ name }
+                        alt={ filterName }
                         width="80"
                         height="80"
                     />
