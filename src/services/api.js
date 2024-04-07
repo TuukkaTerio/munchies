@@ -38,3 +38,16 @@ export async function fetchPriceRangeFilter(priceRangeId) {
         throw error;
     }
 }
+
+export async function fetchRestaurantOpenStatus(restaurantId) {
+    try {
+        const response = await fetch(`${BASE_URL}/open/${ restaurantId }`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch restaurant open status');
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching restaurant open status:', error);
+        throw error;
+    }
+}

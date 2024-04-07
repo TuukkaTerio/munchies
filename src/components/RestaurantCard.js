@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { fetchRestaurantOpenStatus } from '../services/api';
 import styled from "styled-components";
 import {
     IS_OPEN,
@@ -142,14 +143,27 @@ const OverlayText = styled('p')`
 `;
 
 const RestaurantCard = ({
-    // id,
+    id,
     animationIndex,
     name,
     imageUrl,
     restaurantUrl,
     deliveryTimeMinutes
 }) => {
-    const isOpen = true; // TODO: Fetch open status from the API
+    const [isOpen, setIsOpen] = useState(true);
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const restaurantOpenStatus = await fetchRestaurantOpenStatus(id);
+                setIsOpen(restaurantOpenStatus?.is_open);
+            } catch (error) {
+                console.error('Error fetching restaurant open status:', error);
+            }
+        }
+
+        fetchData();
+    }, [id]);
 
 	return (
         <LinkWrapper href={ restaurantUrl }>
