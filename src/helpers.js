@@ -132,6 +132,7 @@ export function checkIfFilterIsActive(filterValue, activeFilters) {
     return activeFilters.some(filter => filter.value === filterValue);
 }
 
+// Filter restaurants based on active filters.
 export function filterRestaurants(restaurants, activeFilters) {
     // Check if restaurants array is empty or undefined.
     if (!isSet(restaurants)) {
@@ -143,28 +144,30 @@ export function filterRestaurants(restaurants, activeFilters) {
         return restaurants;
     }
 
+    // Group active filters by type.
+    const filterGroups = activeFilters.reduce((groups, filter) => {
+        if (!groups[filter.name]) {
+            groups[filter.name] = [];
+        }
+        groups[filter.name].push(filter.value);
+        return groups;
+    }, {});
+
     return restaurants.filter(restaurant => {
-        // Check if any filter matches the restaurant's filter_ids
-        const hasMatchingFilterIds = restaurant.filter_ids.some(id => {
-            return activeFilters.some(filter => {
-                return filter.name === 'category' && filter.value === id;
-            });
+        // Check if the restaurant matches all active filters.
+        return Object.entries(filterGroups).every(([name, values]) => {
+            if (name === 'category') {
+                // Check if the restaurant's filter_ids include any of the category filter values.
+                return values.some(value => restaurant.filter_ids.includes(value));
+            } else if (name === 'price-range') {
+                // Check if the restaurant's price_range_id matches any of the price range filter values.
+                return values.includes(restaurant.price_range_id);
+            } else if (name === 'delivery-time') {
+                // Check if the restaurant's delivery time matches any of the delivery time filter values.
+                const deliveryTimeStr = restaurant.delivery_time_minutes.toString();
+                return values.includes(deliveryTimeStr);
+            }
+            return false;
         });
-
-        // Check if price_range_id matches any filter value
-        const hasMatchingPriceRange = activeFilters.some(filter => {
-            return filter.name === 'price-range' && filter.value === restaurant.price_range_id;
-        });
-
-        // Convert delivery_time_minutes to string for comparison
-        const deliveryTimeStr = restaurant.delivery_time_minutes.toString();
-
-        // Check if delivery_time_minutes matches any filter value
-        const hasMatchingDeliveryTime = activeFilters.some(filter => {
-            return filter.name === 'delivery-time' && filter.value === deliveryTimeStr;
-        });
-
-        // Return true if any of the conditions are met
-        return hasMatchingFilterIds || hasMatchingPriceRange || hasMatchingDeliveryTime;
     });
 }
