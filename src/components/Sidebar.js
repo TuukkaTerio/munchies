@@ -18,7 +18,8 @@ import {
 import {
     isSet,
     getDeliveryTimeFilters,
-    getPriceRangeFilters
+    getPriceRangeFilters,
+    transformCategoryFilters
 } from '../helpers.js';
 import Heading from '../elements/Heading';
 import Fieldset from '../elements/Fieldset';
@@ -64,7 +65,8 @@ const Wrapper = styled('section')`
 
 const Sidebar = () => {
     const restaurants = useSelector(state => state.restaurants || []);
-    const categoryFilters = useSelector(state => state.filters || []);
+    const filters = useSelector(state => state.filters || []);
+    const categoryFilters = transformCategoryFilters(filters);
     const deliveryTimeFilters = getDeliveryTimeFilters(restaurants);
     const [priceRangeFilters, setPriceRangeFilters] = useState([]);
 

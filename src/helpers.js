@@ -104,3 +104,16 @@ export async function getPriceRangeFilters(restaurants) {
         return [];
     }
 }
+
+// Transform category filters so that they will work with the fieldset element.
+export function transformCategoryFilters(categoryFilters) {
+    // Check if categoryFilters array is empty or undefined.
+    if (!isSet(categoryFilters)) {
+        return [];
+    }
+
+    return categoryFilters.map(filter => ({
+        name: filter.name,
+        value: filter.id
+    }));
+}
