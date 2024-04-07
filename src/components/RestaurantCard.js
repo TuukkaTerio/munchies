@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { fetchRestaurantOpenStatus } from '../services/api';
 import styled from "styled-components";
 import {
@@ -200,6 +201,23 @@ const RestaurantCard = ({
             </Wrapper>
         </LinkWrapper>
 	);
+};
+
+RestaurantCard.propTypes = {
+    animationIndex: PropTypes.number,
+    deliveryTimeMinutes: PropTypes.number,
+    id: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string,
+    name: PropTypes.string,
+    restaurantUrl: PropTypes.string
+};
+
+RestaurantCard.defaultProps = {
+    animationIndex: 1,
+    deliveryTimeMinutes: undefined,
+    imageUrl: undefined,
+    name: undefined,
+    restaurantUrl: undefined
 };
 
 export default RestaurantCard;

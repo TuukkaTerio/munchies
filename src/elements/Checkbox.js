@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { addFilter, removeFilter } from '../store/activeFiltersSlice';
 import styled from "styled-components";
@@ -100,6 +101,20 @@ const Checkbox = ({ groupName, filterName, id, label, value, imageUrl }) => {
             </StyledLabel>
         </>
     );
+};
+
+Checkbox.propTypes = {
+    filterName: PropTypes.string.isRequired,
+    groupName: PropTypes.string,
+    id: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string,
+    value: PropTypes.string.isRequired,
+};
+
+Checkbox.defaultProps = {
+    groupName: undefined,
+    imageUrl: undefined,
 };
 
 export default Checkbox;

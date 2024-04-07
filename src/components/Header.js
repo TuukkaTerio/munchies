@@ -26,7 +26,7 @@ const HiddenH1 = styled('h1')`
 const Header = () => (
     <StyledHeader>
         <HiddenH1>{ PAGE_TITLE }</HiddenH1>
-        <Logotype color="black" />
+        <Logotype />
     </StyledHeader>
 );
 

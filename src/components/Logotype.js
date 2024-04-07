@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from "styled-components";
 import {
     PAGE_TITLE,
@@ -20,5 +21,13 @@ const Logotype = ({ color }) => (
         alt={ PAGE_TITLE }
     />
 );
+
+Logotype.propTypes = {
+    color: PropTypes.string
+};
+
+Logotype.defaultProps = {
+    color: 'black'
+};
 
 export default Logotype;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from "styled-components";
 import { DESKTOP_BREAKPOINT } from '../constants';
 
@@ -17,5 +18,9 @@ const StyledLegend = styled('legend')`
 `;
 
 const Legend = ({ text }) => <StyledLegend>{text}</StyledLegend>;
+
+Legend.propTypes = {
+    text: PropTypes.string.isRequired,
+};
 
 export default Legend;

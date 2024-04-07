@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from "styled-components";
 import {
     COLOR_WHITE,
     COLOR_GREEN
 } from '../colors';
+import { isSet } from '../helpers.js';
 
 const StyledButton = styled('button')`
     background: none;
@@ -45,9 +47,19 @@ const Button = ({
 				handleButtonClick();
 			}}
 			disabled={ isDisabled }>
-			{ actionText }
+			{ isSet(actionText) && actionText }
 		</StyledButton>
 	);
+};
+
+Button.propTypes = {
+    actionText: PropTypes.string,
+    onClick: PropTypes.func
+};
+
+Button.defaultProps = {
+    actionText: undefined,
+    onClick: () => {}
 };
 
 export default Button;

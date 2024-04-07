@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from "styled-components";
 import { isSet } from '../helpers.js';
 import Legend from './Legend';
@@ -16,6 +17,7 @@ const StyledFieldset = styled('fieldset')`
 `;
 
 const FlexWrapper = styled('div')`
+    align-items: flex-start;
     display: flex;
     flex-direction: ${ ({ $useFlexDirectionColumn }) => $useFlexDirectionColumn ? 'column' : 'row' };
     flex-wrap: wrap;
@@ -44,6 +46,23 @@ const Fieldset = ({ legend, groupName, filterName, inputFields, customGap, useFl
             </FlexWrapper>
         </StyledFieldset>
     );
+};
+
+Checkbox.propTypes = {
+    customGap: PropTypes.string,
+    filterName: PropTypes.string.isRequired,
+    groupName: PropTypes.string,
+    inputFields: PropTypes.array,
+    legend: PropTypes.string,
+    useFlexDirectionColumn: PropTypes.bool,
+};
+
+Checkbox.defaultProps = {
+    customGap: undefined,
+    groupName: undefined,
+    inputFields: [],
+    legend: undefined,
+    useFlexDirectionColumn: false,
 };
 
 export default Fieldset;

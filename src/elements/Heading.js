@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { DESKTOP_BREAKPOINT } from '../constants';
 import { isSet } from '../helpers';
@@ -26,6 +27,10 @@ const Heading = ({
 	semanticLevel,
 	styleLevel
 }) => {
+    if (!isSet(content)) {
+        return null;
+    }
+
 	const HeadingTag = getHeadingLevel(semanticLevel);
 
 	function getHeadingLevel(semanticLevel) {
@@ -51,6 +56,17 @@ const Heading = ({
 			{content}
 		</StyledHeading>
 	);
+};
+
+Heading.propTypes = {
+    content: PropTypes.string.isRequired,
+	semanticLevel: PropTypes.number,
+	styleLevel: PropTypes.number
+};
+
+Heading.defaultProps = {
+    semanticLevel: 2,
+	styleLevel: 2
 };
 
 export default Heading;

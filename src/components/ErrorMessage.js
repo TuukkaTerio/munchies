@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from "styled-components";
 
 const Wrapper = styled('p')`
@@ -14,5 +15,14 @@ const ErrorMessage = ({ children, height }) => (
         { children }
     </Wrapper>
 );
+
+ErrorMessage.propTypes = {
+    children: PropTypes.node.isRequired,
+    height: PropTypes.string
+};
+
+ErrorMessage.defaultProps = {
+    height: undefined
+};
 
 export default ErrorMessage;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from "styled-components";
 import { DESKTOP_BREAKPOINT } from '../../constants';
 
@@ -19,5 +20,14 @@ const FlexWrapper = ({ children, useFlexDirectionColumn }) => (
         { children }
     </Wrapper>
 );
+
+FlexWrapper.propTypes = {
+    children: PropTypes.node.isRequired,
+    useFlexDirectionColumn: PropTypes.bool
+};
+
+FlexWrapper.defaultProps = {
+    useFlexDirectionColumn: false
+};
 
 export default FlexWrapper;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from "styled-components";
 import { COLOR_BLACK } from '../colors';
 
@@ -95,5 +96,14 @@ const Loader = ({ children, height }) => (
         </AnimatedEllipsis>
     </Wrapper>
 );
+
+Loader.propTypes = {
+    children: PropTypes.node.isRequired,
+    height: PropTypes.string
+};
+
+Loader.defaultProps = {
+    height: undefined
+};
 
 export default Loader;

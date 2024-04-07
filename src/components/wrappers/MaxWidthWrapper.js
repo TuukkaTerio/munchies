@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from "styled-components";
 import {
     DESKTOP_BREAKPOINT,
@@ -19,5 +20,9 @@ const Wrapper = styled('div')`
 `;
 
 const MaxWidthWrapper = ({ children }) => <Wrapper>{ children }</Wrapper>;
+
+MaxWidthWrapper.propTypes = {
+    children: PropTypes.node.isRequired,
+};
 
 export default MaxWidthWrapper;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from "styled-components";
 import {
     COLOR_WHITE,
@@ -23,5 +24,9 @@ const Badge = ({ children }) => (
         { children }
     </Wrapper>
 );
+
+Badge.propTypes = {
+    children: PropTypes.node.isRequired,
+};
 
 export default Badge;
