@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchRestaurants } from '../services/api';
+import { addRestaurants } from '../store/restaurantsSlice';
 import styled from "styled-components";
 import {
     LIST_VIEW_HEADING,
@@ -9,7 +10,6 @@ import {
     COULD_NOT_GET_RESTAURANTS
 } from '../constants';
 import { isSet } from '../helpers.js';
-import { addRestaurants } from '../store/restaurantsSlice';
 import Heading from '../elements/Heading';
 import RestaurantCard from './RestaurantCard';
 import Loader from './Loader';

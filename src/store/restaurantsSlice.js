@@ -5,7 +5,7 @@ const restaurantsSlice = createSlice({
     initialState: [],
     reducers: {
         addRestaurants: (state, action) => {
-            state.push(...action.payload);
+            return action.payload;
         },
     },
 });

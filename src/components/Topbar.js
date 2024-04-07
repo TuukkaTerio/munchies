@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchCategoryFilters } from '../services/api';
+import { addFilters } from '../store/filtersSlice';
 import styled from "styled-components";
 import {
     CATEGORY_FILTER_LEGEND,
@@ -66,7 +67,7 @@ const ScrollWrapper = styled('div')`
     }
 `;
 
-const Sidebar = () => {
+const Topbar = () => {
     const dispatch = useDispatch();
     const [categoryFilters, setCategoryFilters] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -78,6 +79,7 @@ const Sidebar = () => {
             try {
                 const categoryFiltersData = await fetchCategoryFilters();
                 setCategoryFilters(categoryFiltersData?.filters || []);
+                dispatch(addFilters(categoryFiltersData?.filters || []));
                 setLoading(false);
             } catch (error) {
                 setError(true);
@@ -113,4 +115,4 @@ const Sidebar = () => {
     );
 };
 
-export default Sidebar;
+export default Topbar;

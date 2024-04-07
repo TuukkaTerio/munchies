@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from "styled-components";
 import {
     COLOR_WHITE,
@@ -58,37 +59,7 @@ const Wrapper = styled('section')`
 `;
 
 const Sidebar = () => {
-    // TODO: Fetch filters from the API
-    const categoryFilters = [
-        {
-            name: "Hamburger",
-            value: "6521e1ee-cf8c-4143-8c80-21e3bda48b2e"
-        },
-        {
-            name: "Pizza",
-            value: "be554e59-7c10-442e-a032-2200a6b0d2cf"
-        },
-        {
-            name: "Taco's",
-            value: "e7e09166-65ed-457b-944b-d7b1e6b229db"
-        },
-        {
-            name: "Coffee",
-            value: "d61a08aa-5e53-4500-a229-f69b1f824605"
-        },
-        {
-            name: "Burrito",
-            value: "74c2878b-d520-4cee-ac42-e21f8b088441"
-        },
-        {
-            name: "Fries",
-            value: "d4dad40a-bdba-43fe-8ebb-56372e37a450"
-        },
-        {
-            name: "Breakfast",
-            value: "b8083ed1-389e-41a7-9cee-a9fe6ed91121"
-        },
-    ];
+    const categoryFilters = useSelector(state => state.filters);
 
     const deliveryTimeFilters = [
         {
