@@ -25,3 +25,16 @@ export async function fetchCategoryFilters() {
         throw error;
     }
 }
+
+export async function fetchPriceRangeFilter(priceRangeId) {
+    try {
+        const response = await fetch(`${BASE_URL}/price-range/${ priceRangeId }`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch price range filters');
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching price range filters:', error);
+        throw error;
+    }
+}

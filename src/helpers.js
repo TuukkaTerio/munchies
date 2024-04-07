@@ -1,4 +1,5 @@
 import { DELIVERY_TIME_UNIT } from './constants';
+import { fetchPriceRangeFilter } from './services/api';
 
 // --------------------------------------------------------------
 // General helper functions
@@ -25,6 +26,10 @@ export function allowScroll() {
     return;
 }
 
+// --------------------------------------------------------------
+// Filter helper functions
+// --------------------------------------------------------------
+
 // Get delivery time filters from the restaurants data.
 export function getDeliveryTimeFilters(restaurants) {
     // Check if restaurants array is empty or undefined.
@@ -47,4 +52,55 @@ export function getDeliveryTimeFilters(restaurants) {
     }));
 
     return deliveryTimeFilters;
+}
+
+// Get price range ids from the restaurants data.
+export function getPriceRangeIds(restaurants) {
+    // Check if restaurants array is empty or undefined.
+    if (!isSet(restaurants)) {
+        return [];
+    }
+
+    // Get an array of unique price range ids
+    const uniquePriceRangeIds = Array.from(
+        new Set(restaurants.map(restaurant => restaurant.price_range_id))
+    );
+
+    return uniquePriceRangeIds;
+}
+
+// Get price range filters from the restaurants data.
+export async function getPriceRangeFilters(restaurants) {
+    // Check if restaurants array is empty or undefined.
+    if (!isSet(restaurants)) {
+        return [];
+    }
+
+    const priceRangeIds = getPriceRangeIds(restaurants);
+
+    // Check if priceRangeIds array is empty or undefined.
+    if (!isSet(priceRangeIds)) {
+        return [];
+    }
+
+    // Fetch price range filter data for each price range id.
+    const fetchPromises = priceRangeIds.map(priceRangeId =>
+        fetchPriceRangeFilter(priceRangeId)
+    );
+
+    try {
+        // Wait until all fetch requests are complete.
+        const responses = await Promise.all(fetchPromises);
+
+        // Construct the priceRangeFilters array.
+        const priceRangeFilters = responses.map(response => ({
+            name: response.range,
+            value: response.range
+        }));
+
+        return priceRangeFilters;
+    } catch (error) {
+        console.error('Error fetching price range filters:', error);
+        return [];
+    }
 }

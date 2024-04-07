@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import styled from "styled-components";
 import {
@@ -17,7 +17,8 @@ import {
 } from '../constants';
 import {
     isSet,
-    getDeliveryTimeFilters
+    getDeliveryTimeFilters,
+    getPriceRangeFilters
 } from '../helpers.js';
 import Heading from '../elements/Heading';
 import Fieldset from '../elements/Fieldset';
@@ -65,25 +66,20 @@ const Sidebar = () => {
     const restaurants = useSelector(state => state.restaurants || []);
     const categoryFilters = useSelector(state => state.filters || []);
     const deliveryTimeFilters = getDeliveryTimeFilters(restaurants);
+    const [priceRangeFilters, setPriceRangeFilters] = useState([]);
 
-    const priceRangeFilters = [
-        {
-            name: "$",
-            value: "$"
-        },
-        {
-            name: "$$",
-            value: "$$"
-        },
-        {
-            name: "$$$",
-            value: "$$$"
-        },
-        {
-            name: "$$$$",
-            value: "$$$$"
-        },
-    ];
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const fetchedFilters = await getPriceRangeFilters(restaurants);
+                setPriceRangeFilters(fetchedFilters);
+            } catch (error) {
+                console.error('Error fetching price range filters:', error);
+            }
+        }
+
+        fetchData();
+    }, [restaurants]);
 
     return (
         <Wrapper>
