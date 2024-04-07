@@ -12,8 +12,8 @@ const Wrapper = styled('p')`
     border-radius: 88px;
     display: flex;
     font-size: 12px;
-    line-height: 12px;
     gap: 4px;
+    line-height: 12px;
     padding: 8px 12px;
     margin: 0;
 `;
