@@ -8,6 +8,7 @@ export const PAGE_TITLE = "Munchies";
 export const LIST_VIEW_HEADING = "Restaurant's";
 export const LOADING_RESTAURANTS = "Loading munchies";
 export const COULD_NOT_GET_RESTAURANTS = "Oops! We can't find any restaurants right now. Please try again later.";
+export const NO_RESTAURANTS_FOUND = "We couldn't find any matching restaurants. Don't give up, try some other filters!";
 
 // RestaurantCard
 export const IS_OPEN = "Open";

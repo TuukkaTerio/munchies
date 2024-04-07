@@ -7,7 +7,8 @@ import {
     LIST_VIEW_HEADING,
     DESKTOP_BREAKPOINT,
     LOADING_RESTAURANTS,
-    COULD_NOT_GET_RESTAURANTS
+    COULD_NOT_GET_RESTAURANTS,
+    NO_RESTAURANTS_FOUND
 } from '../constants';
 import {
     isSet,
@@ -17,6 +18,7 @@ import Heading from '../elements/Heading';
 import RestaurantCard from './RestaurantCard';
 import Loader from './Loader';
 import ErrorMessage from './ErrorMessage';
+import NoResults from './NoResults';
 
 const StyledSection = styled('section')`
     width: 100%;
@@ -75,7 +77,7 @@ const ListView = () => {
             />
             { loading && <Loader height="50vh">{ LOADING_RESTAURANTS }</Loader> }
             { error && <ErrorMessage height="50vh">{ COULD_NOT_GET_RESTAURANTS }</ErrorMessage> }
-            { !loading && !error && isSet(filteredRestaurants) && (
+            { !loading && !error && isSet(filteredRestaurants) ? (
                 <Grid>
                     { filteredRestaurants.map((restaurant, index) => (
                         <li key={ `${index}-${restaurant.id}` }>
@@ -91,7 +93,9 @@ const ListView = () => {
                         </li>
                     )) }
                 </Grid>
-            ) }
+            ) : (
+                <NoResults>{ NO_RESTAURANTS_FOUND }</NoResults>
+            )}
         </StyledSection>
     );
 }
