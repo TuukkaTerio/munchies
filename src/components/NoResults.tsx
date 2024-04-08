@@ -1,6 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC, ReactNode } from 'react';
 import styled from "styled-components";
+
+interface NoResultsProps {
+    children: ReactNode;
+}
 
 const Wrapper = styled('p')`
     align-items: center;
@@ -10,14 +13,10 @@ const Wrapper = styled('p')`
     text-align: center;
 `;
 
-const NoResults = ({ children }) => (
+const NoResults: FC<NoResultsProps> = ({ children }) => (
     <Wrapper>
         { children }
     </Wrapper>
 );
-
-NoResults.propTypes = {
-    children: PropTypes.node.isRequired
-};
 
 export default NoResults;

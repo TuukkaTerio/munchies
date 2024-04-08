@@ -1,9 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC } from 'react';
 import styled from "styled-components";
 import { DESKTOP_BREAKPOINT } from '../constants';
 
-const StyledLegend = styled('legend')`
+interface LegendProps {
+    text: string;
+}
+
+const StyledLegend = styled.legend`
     font-size: 12px;
     font-weight: 590;
     letter-spacing: -0.5px;
@@ -17,10 +20,6 @@ const StyledLegend = styled('legend')`
     }
 `;
 
-const Legend = ({ text }) => <StyledLegend>{text}</StyledLegend>;
-
-Legend.propTypes = {
-    text: PropTypes.string.isRequired,
-};
+const Legend: FC<LegendProps> = ({ text }) => <StyledLegend>{ text }</StyledLegend>;
 
 export default Legend;

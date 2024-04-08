@@ -1,12 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC } from 'react';
 import styled from "styled-components";
 import {
     PAGE_TITLE,
     DESKTOP_BREAKPOINT
 } from '../constants';
 
-const StyledLogotype = styled('img')`
+interface LogotypeProps {
+    color?: string;
+}
+
+const StyledLogotype = styled.img`
     height: 24px;
     width: auto;
 
@@ -15,19 +18,11 @@ const StyledLogotype = styled('img')`
     }
 `;
 
-const Logotype = ({ color }) => (
+const Logotype: FC<LogotypeProps> = ({ color }) => (
     <StyledLogotype
-        src={ `./icons/logotype_${ color }.svg` }
+        src={ `./icons/logotype_${ color || 'black' }.svg` }
         alt={ PAGE_TITLE }
     />
 );
-
-Logotype.propTypes = {
-    color: PropTypes.string
-};
-
-Logotype.defaultProps = {
-    color: 'black'
-};
 
 export default Logotype;

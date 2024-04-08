@@ -12,8 +12,8 @@ import {
     DESKTOP_BREAKPOINT
 } from '../constants';
 import { preventScroll, allowScroll } from '../helpers.js';
-import Logotype from './Logotype';
-import Button from '../elements/Button';
+import Logotype from './Logotype.tsx';
+import Button from '../elements/Button.tsx';
 
 const Wrapper = styled('div')`
     align-items: flex-start;

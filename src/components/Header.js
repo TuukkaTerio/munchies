@@ -2,7 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import { DESKTOP_BREAKPOINT } from '../constants';
 import { PAGE_TITLE } from '../constants';
-import Logotype from './Logotype';
+import Logotype from './Logotype.tsx';
 
 const StyledHeader = styled('header')`
     margin: 40px 0 24px;

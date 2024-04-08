@@ -14,11 +14,11 @@ import {
     isSet,
     filterRestaurants
 } from '../helpers.js';
-import Heading from '../elements/Heading';
-import RestaurantCard from './RestaurantCard';
-import Loader from './Loader';
-import ErrorMessage from './ErrorMessage';
-import NoResults from './NoResults';
+import Heading from '../elements/Heading.tsx';
+import RestaurantCard from './RestaurantCard.tsx';
+import Loader from './Loader.tsx';
+import ErrorMessage from './ErrorMessage.tsx';
+import NoResults from './NoResults.tsx';
 
 const StyledSection = styled('section')`
     width: 100%;
@@ -98,6 +98,6 @@ const ListView = () => {
             )}
         </StyledSection>
     );
-}
+};
 
 export default ListView;

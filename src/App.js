@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import styled from "styled-components";
 import { DESKTOP_BREAKPOINT } from './constants';
-import MaxWidthWrapper from './components/wrappers/MaxWidthWrapper';
+import MaxWidthWrapper from './components/wrappers/MaxWidthWrapper.tsx';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ListView from './components/ListView';

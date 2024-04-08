@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC, ReactNode } from 'react';
 import styled from "styled-components";
-import {
-    COLOR_WHITE,
-    COLOR_GREY
-} from '../colors';
+import { COLOR_WHITE, COLOR_GREY } from '../colors';
+
+interface BadgeProps {
+    children: ReactNode;
+}
 
 const Wrapper = styled('p')`
     align-items: center;
@@ -19,14 +19,10 @@ const Wrapper = styled('p')`
     margin: 0;
 `;
 
-const Badge = ({ children }) => (
+const Badge: FC<BadgeProps> = ({ children }) => (
     <Wrapper>
         { children }
     </Wrapper>
 );
-
-Badge.propTypes = {
-    children: PropTypes.node.isRequired,
-};
 
 export default Badge;

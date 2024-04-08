@@ -13,9 +13,9 @@ import {
     COULD_NOT_GET_CATEGORY_FILTERS
 } from '../constants';
 import { isSet } from '../helpers.js';
-import Checkbox from '../elements/Checkbox';
-import Loader from './Loader';
-import ErrorMessage from './ErrorMessage';
+import Checkbox from '../elements/Checkbox.tsx';
+import Loader from './Loader.tsx';
+import ErrorMessage from './ErrorMessage.tsx';
 
 const StyledFieldset = styled('fieldset')`
     border: none;

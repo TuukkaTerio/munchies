@@ -21,8 +21,8 @@ import {
     getPriceRangeFilters,
     transformCategoryFilters
 } from '../helpers.js';
-import Heading from '../elements/Heading';
-import Fieldset from '../elements/Fieldset';
+import Heading from '../elements/Heading.tsx';
+import Fieldset from '../elements/Fieldset.tsx';
 
 const InclusivelyHideOnMobile = styled('div')`
     @media (max-width: ${ DESKTOP_BREAKPOINT }) {
