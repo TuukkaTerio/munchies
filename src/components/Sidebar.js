@@ -47,6 +47,8 @@ const Wrapper = styled('section')`
     display: flex;
     flex-direction: column;
     gap: 32px;
+    grid-column: 1;
+    grid-row: span 2;
 
     @media (min-width: ${ DESKTOP_BREAKPOINT }) {
         background-color: ${ COLOR_WHITE };
@@ -58,6 +60,7 @@ const Wrapper = styled('section')`
             -35px 20px 24px 0px ${ COLOR_TRANSPARENT },
             -63px 36px 29px 0px ${ COLOR_TRANSPARENT },
             -98px 56px 32px 0px ${ COLOR_TRANSPARENT };
+        box-sizing: border-box;
         padding: 24px;
         width: ${ SIDEBAR_WIDTH };
     }

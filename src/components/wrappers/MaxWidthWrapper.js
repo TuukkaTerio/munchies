@@ -7,12 +7,9 @@ import {
 } from '../../constants';
 
 const Wrapper = styled('div')`
-    box-sizing: border-box;
     margin: 0 auto;
     max-width: 100vw;
-    overflow-x: hidden;
     padding: 0 ${ PAGE_SIDE_PADDING };
-    width: 100%;
 
     @media (min-width: ${ DESKTOP_BREAKPOINT }) {
         max-width: 1440px;
