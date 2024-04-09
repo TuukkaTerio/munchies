@@ -2,10 +2,7 @@ const BASE_URL = 'https://work-test-web-2024-eze6j4scpq-lz.a.run.app/api';
 
 export async function fetchRestaurants() {
     try {
-        const response = await fetch(`${BASE_URL}/restaurants`, {
-            method: 'GET',
-            mode: 'no-cors'
-        });
+        const response = await fetch(`${BASE_URL}/restaurants`);
         if (!response.ok) {
             throw new Error('Failed to fetch restaurants');
         }
@@ -18,10 +15,7 @@ export async function fetchRestaurants() {
 
 export async function fetchCategoryFilters() {
     try {
-        const response = await fetch(`${BASE_URL}/filter`, {
-            method: 'GET',
-            mode: 'no-cors'
-        });
+        const response = await fetch(`${BASE_URL}/filter`);
         if (!response.ok) {
             throw new Error('Failed to fetch category filters');
         }
@@ -34,10 +28,7 @@ export async function fetchCategoryFilters() {
 
 export async function fetchPriceRangeFilter(priceRangeId) {
     try {
-        const response = await fetch(`${BASE_URL}/price-range/${ priceRangeId }`, {
-            method: 'GET',
-            mode: 'no-cors'
-        });
+        const response = await fetch(`${BASE_URL}/price-range/${ priceRangeId }`);
         if (!response.ok) {
             throw new Error('Failed to fetch price range filters');
         }
@@ -50,10 +41,7 @@ export async function fetchPriceRangeFilter(priceRangeId) {
 
 export async function fetchRestaurantOpenStatus(restaurantId) {
     try {
-        const response = await fetch(`${BASE_URL}/open/${ restaurantId }`, {
-            method: 'GET',
-            mode: 'no-cors'
-        });
+        const response = await fetch(`${BASE_URL}/open/${ restaurantId }`);
         if (!response.ok) {
             throw new Error('Failed to fetch restaurant open status');
         }
