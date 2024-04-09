@@ -77,7 +77,7 @@ const ListView = () => {
             />
             { loading && <Loader height="50vh">{ LOADING_RESTAURANTS }</Loader> }
             { error && <ErrorMessage height="50vh">{ COULD_NOT_GET_RESTAURANTS }</ErrorMessage> }
-            { !loading && !error && isSet(filteredRestaurants) ? (
+            { !loading && !error && isSet(filteredRestaurants) && (
                 <Grid>
                     { filteredRestaurants.map((restaurant, index) => (
                         <li key={ `${index}-${restaurant.id}` }>
@@ -93,9 +93,8 @@ const ListView = () => {
                         </li>
                     )) }
                 </Grid>
-            ) : (
-                <NoResults>{ NO_RESTAURANTS_FOUND }</NoResults>
-            )}
+            ) }
+            { !loading && !error && !isSet(filteredRestaurants) && <NoResults>{ NO_RESTAURANTS_FOUND }</NoResults> }
         </StyledSection>
     );
 };
