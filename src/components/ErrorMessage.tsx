@@ -1,11 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import styled from "styled-components";
 
-interface ErrorMessageProps {
-    children: ReactNode;
-    height?: string;
-}
-
 const Wrapper = styled.p<{ $height?: string }>`
     align-items: center;
     display: flex;
@@ -13,6 +8,11 @@ const Wrapper = styled.p<{ $height?: string }>`
     justify-content: center;
     text-align: center;
 `;
+
+interface ErrorMessageProps {
+    children: ReactNode;
+    height?: string;
+}
 
 const ErrorMessage: FC<ErrorMessageProps> = ({ children, height }) => (
     <Wrapper $height={ height }>

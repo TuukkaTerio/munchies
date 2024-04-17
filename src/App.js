@@ -11,7 +11,7 @@ import Sidebar from './components/Sidebar';
 import Topbar from './components/Topbar';
 import AppStartScreen from './components/AppStartScreen';
 
-const Main = styled('main')`
+const Main = styled.main`
     display: grid;
     gap: 24px;
 

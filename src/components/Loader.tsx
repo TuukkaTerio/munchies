@@ -2,11 +2,6 @@ import React, { FC, ReactNode } from 'react';
 import styled, { keyframes } from "styled-components";
 import { COLOR_BLACK } from '../colors';
 
-interface LoaderProps {
-    children: ReactNode;
-    height?: string;
-}
-
 const Wrapper = styled.p<{ $height?: string }>`
     align-content: center;
     display: flex;
@@ -87,6 +82,11 @@ const AnimatedEllipsis = styled.span`
         left: 56px;
     }
 `;
+
+interface LoaderProps {
+    children: ReactNode;
+    height?: string;
+}
 
 const Loader: FC<LoaderProps> = ({ children, height }) => (
     <Wrapper $height={ height }>

@@ -7,7 +7,7 @@ import {
 } from '../constants';
 import { COLOR_BLACK } from '../colors';
 
-const StyledFooter = styled('footer')`
+const StyledFooter = styled.footer`
     margin: 32px 0;
     text-align: center;
 
@@ -16,7 +16,7 @@ const StyledFooter = styled('footer')`
     }
 `;
 
-const StyledLink = styled('a')`
+const StyledLink = styled.a`
     color: ${ COLOR_BLACK };
     cursor: pointer;
     display: inline-block;

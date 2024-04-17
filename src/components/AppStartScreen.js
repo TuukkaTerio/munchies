@@ -15,7 +15,7 @@ import { preventScroll, allowScroll } from '../helpers.js';
 import Logotype from './Logotype.tsx';
 import Button from '../elements/Button.tsx';
 
-const Wrapper = styled('div')`
+const Wrapper = styled.div`
     align-items: flex-start;
     background-color: ${ COLOR_GREEN };
     bottom: 0;
@@ -34,11 +34,11 @@ const Wrapper = styled('div')`
     }
 `;
 
-const TextWrapper = styled('div')`
+const TextWrapper = styled.div`
     max-width: 246px;
 `;
 
-const AppStartScreenHeading = styled('h2')`
+const AppStartScreenHeading = styled.h2`
     font-size: 48px;
     font-weight: 760;
     line-height: 48px;
@@ -46,7 +46,7 @@ const AppStartScreenHeading = styled('h2')`
     margin-bottom: 16px;
 `;
 
-const AppStartScreenParagraph = styled('p')`
+const AppStartScreenParagraph = styled.p`
     font-size: 14px;
     font-weight: 400;
     line-height: 21px;

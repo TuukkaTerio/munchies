@@ -3,11 +3,6 @@ import styled from "styled-components";
 import { COLOR_WHITE, COLOR_GREEN } from '../colors';
 import { isSet } from '../helpers';
 
-interface ButtonProps {
-    onClick: () => void;
-    actionText?: string;
-}
-
 const StyledButton = styled.button`
     background: none;
     border: 1px solid ${ COLOR_WHITE };
@@ -26,6 +21,11 @@ const StyledButton = styled.button`
         color: ${ COLOR_GREEN };
     }
 `;
+
+interface ButtonProps {
+    onClick: () => void;
+    actionText?: string;
+}
 
 const Button: FC<ButtonProps> = ({ onClick, actionText }) => {
     const [isDisabled, setIsDisabled] = useState(false);

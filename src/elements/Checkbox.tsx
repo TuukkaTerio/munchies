@@ -15,15 +15,6 @@ import {
     checkIfFilterIsActive
 } from '../helpers';
 
-interface CheckboxProps {
-    groupName?: string;
-    filterName: string;
-    id: string;
-    label: string;
-    imageUrl?: string;
-    value: string;
-}
-
 const StyledLabel = styled.label<{ $isChecked: boolean; $hasImage: boolean }>`
     background-color: ${ props => props.$isChecked ? COLOR_BLACK : COLOR_WHITE };
     border: 0.6px solid ${ COLOR_GREY };
@@ -71,6 +62,15 @@ const Image = styled.img`
     top: 0px;
     user-select: none;
 `;
+
+interface CheckboxProps {
+    groupName?: string;
+    filterName: string;
+    id: string;
+    label: string;
+    imageUrl?: string;
+    value: string;
+}
 
 const Checkbox: React.FC<CheckboxProps> = ({ groupName, filterName, id, label, value, imageUrl }) => {
     const dispatch = useDispatch();

@@ -17,7 +17,7 @@ import Checkbox from '../elements/Checkbox.tsx';
 import Loader from './Loader.tsx';
 import ErrorMessage from './ErrorMessage.tsx';
 
-const StyledFieldset = styled('fieldset')`
+const StyledFieldset = styled.fieldset`
     border: none;
     margin-inline-start: 0;
     margin-inline-end: 0;
@@ -28,7 +28,7 @@ const StyledFieldset = styled('fieldset')`
     padding-inline-end: 0;
 `;
 
-const HiddenLegend = styled('legend')`
+const HiddenLegend = styled.legend`
     // Inclusively hidden since screen readers generally ignore anything with display: none.
     clip: rect(0 0 0 0);
     clip-path: inset(50%);
@@ -39,7 +39,7 @@ const HiddenLegend = styled('legend')`
     width: 1px;
 `;
 
-const BleedWrapper = styled('div')`
+const BleedWrapper = styled.div`
     margin: 0 -${ PAGE_SIDE_PADDING };
     max-width: 100vw;
     overflow-x: hidden;
@@ -51,7 +51,7 @@ const BleedWrapper = styled('div')`
     }
 `;
 
-const ScrollWrapper = styled('div')`
+const ScrollWrapper = styled.div`
     box-sizing: border-box;
     display: grid;
     grid-auto-flow: column;

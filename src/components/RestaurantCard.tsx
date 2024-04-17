@@ -25,15 +25,6 @@ import Heading from '../elements/Heading.tsx';
 import Badge from './Badge.tsx';
 import ArrowIcon from './ArrowIcon.js';
 
-interface RestaurantCardProps {
-    animationIndex?: number;
-    deliveryTimeMinutes?: number;
-    id: string;
-    imageUrl?: string;
-    name?: string;
-    restaurantUrl?: string;
-}
-
 const fadeInUp = keyframes`
     from {
         transform: translate3d(0, 40px, 0);
@@ -155,6 +146,15 @@ const OverlayText = styled.p`
     line-height: 12px;
     padding: 8px 10px;
 `;
+
+interface RestaurantCardProps {
+    animationIndex?: number;
+    deliveryTimeMinutes?: number;
+    id: string;
+    imageUrl?: string;
+    name?: string;
+    restaurantUrl?: string;
+}
 
 const RestaurantCard: FC<RestaurantCardProps> = ({
     id,

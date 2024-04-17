@@ -4,7 +4,7 @@ import { DESKTOP_BREAKPOINT } from '../constants';
 import { PAGE_TITLE } from '../constants';
 import Logotype from './Logotype.tsx';
 
-const StyledHeader = styled('header')`
+const StyledHeader = styled.header`
     margin: 40px 0 24px;
 
     @media (min-width: ${ DESKTOP_BREAKPOINT }) {
@@ -12,7 +12,7 @@ const StyledHeader = styled('header')`
     }
 `;
 
-const HiddenH1 = styled('h1')`
+const HiddenH1 = styled.h1`
     // Inclusively hidden since screen readers generally ignore anything with display: none.
     clip: rect(0 0 0 0);
     clip-path: inset(50%);

@@ -3,12 +3,6 @@ import styled from 'styled-components';
 import { DESKTOP_BREAKPOINT } from '../constants';
 import { isSet } from '../helpers';
 
-interface HeadingProps {
-    content: string;
-    semanticLevel?: number;
-    styleLevel?: number;
-}
-
 const StyledHeading = styled.div`
     font-size: 24px;
     font-weight: 400;
@@ -26,6 +20,12 @@ const StyledHeading = styled.div`
         }
     }
 `;
+
+interface HeadingProps {
+    content: string;
+    semanticLevel?: number;
+    styleLevel?: number;
+}
 
 const Heading: FC<HeadingProps> = ({ content, semanticLevel = 2, styleLevel = 2 }) => {
     if (!isSet(content)) {

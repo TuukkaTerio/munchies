@@ -4,15 +4,6 @@ import { isSet } from '../helpers';
 import Legend from './Legend.tsx';
 import Checkbox from './Checkbox.tsx';
 
-interface FieldsetProps {
-    legend?: string;
-    groupName: string;
-    filterName: string;
-    inputFields: { name: string; value: string }[];
-    customGap?: string;
-    useFlexDirectionColumn?: boolean;
-}
-
 const StyledFieldset = styled.fieldset`
     border: none;
     margin-inline-start: 0;
@@ -31,6 +22,15 @@ const FlexWrapper = styled.div<{ $useFlexDirectionColumn?: boolean; $customGap?:
     flex-wrap: wrap;
     gap: ${props => props.$customGap || '8px'};
 `;
+
+interface FieldsetProps {
+    legend?: string;
+    groupName: string;
+    filterName: string;
+    inputFields: { name: string; value: string }[];
+    customGap?: string;
+    useFlexDirectionColumn?: boolean;
+}
 
 const Fieldset: FC<FieldsetProps> = ({ legend, groupName, filterName, inputFields, customGap, useFlexDirectionColumn = false }) => {
     if (!isSet(inputFields)) {

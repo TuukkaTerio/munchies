@@ -2,10 +2,6 @@ import React, { FC } from 'react';
 import styled from "styled-components";
 import { DESKTOP_BREAKPOINT } from '../constants';
 
-interface LegendProps {
-    text: string;
-}
-
 const StyledLegend = styled.legend`
     font-size: 12px;
     font-weight: 590;
@@ -19,6 +15,10 @@ const StyledLegend = styled.legend`
         margin-bottom: 16px;
     }
 `;
+
+interface LegendProps {
+    text: string;
+}
 
 const Legend: FC<LegendProps> = ({ text }) => <StyledLegend>{ text }</StyledLegend>;
 

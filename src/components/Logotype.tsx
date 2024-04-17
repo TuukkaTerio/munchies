@@ -5,10 +5,6 @@ import {
     DESKTOP_BREAKPOINT
 } from '../constants';
 
-interface LogotypeProps {
-    color?: string;
-}
-
 const StyledLogotype = styled.img`
     height: 24px;
     width: auto;
@@ -17,6 +13,10 @@ const StyledLogotype = styled.img`
         height: 40px;
     }
 `;
+
+interface LogotypeProps {
+    color?: string;
+}
 
 const Logotype: FC<LogotypeProps> = ({ color }) => (
     <StyledLogotype

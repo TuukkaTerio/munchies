@@ -20,11 +20,11 @@ import Loader from './Loader.tsx';
 import ErrorMessage from './ErrorMessage.tsx';
 import NoResults from './NoResults.tsx';
 
-const StyledSection = styled('section')`
+const StyledSection = styled.section`
     width: 100%;
 `;
 
-const Grid = styled('ul')`
+const Grid = styled.ul`
     display: flex;
     flex-direction: column;
     gap: 20px;

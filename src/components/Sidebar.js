@@ -24,7 +24,7 @@ import {
 import Heading from '../elements/Heading.tsx';
 import Fieldset from '../elements/Fieldset.tsx';
 
-const InclusivelyHideOnMobile = styled('div')`
+const InclusivelyHideOnMobile = styled.div`
     @media (max-width: ${ DESKTOP_BREAKPOINT }) {
         // Inclusively hidden since screen readers generally ignore anything with display: none.
         clip: rect(0 0 0 0);
@@ -37,13 +37,13 @@ const InclusivelyHideOnMobile = styled('div')`
     }
 `;
 
-const HideOnMobile = styled('div')`
+const HideOnMobile = styled.div`
     @media (max-width: ${ DESKTOP_BREAKPOINT }) {
         display: none;
     }
 `;
 
-const Wrapper = styled('section')`
+const Wrapper = styled.section`
     display: flex;
     flex-direction: column;
     gap: 32px;
