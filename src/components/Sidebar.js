@@ -3,9 +3,8 @@ import { useSelector } from 'react-redux';
 import styled from "styled-components";
 import {
     COLOR_WHITE,
-    COLOR_GREY,
-    COLOR_BOX_SHADOW_GREY,
-    COLOR_TRANSPARENT
+    COLOR_STROKE,
+    COLOR_BOX_SHADOW_GREY
 } from '../colors';
 import {
     SIDE_BAR_HEADING,
@@ -52,14 +51,14 @@ const Wrapper = styled.section`
 
     @media (min-width: ${ DESKTOP_BREAKPOINT }) {
         background-color: ${ COLOR_WHITE };
-        border: 0.6px solid ${ COLOR_GREY };
+        border: 0.6px solid ${ COLOR_STROKE };
         border-radius: 8px;
         box-shadow:
             -4px 2px 10px 0px ${ COLOR_BOX_SHADOW_GREY },
             -16px 9px 18px 0px ${ COLOR_BOX_SHADOW_GREY },
-            -35px 20px 24px 0px ${ COLOR_TRANSPARENT },
-            -63px 36px 29px 0px ${ COLOR_TRANSPARENT },
-            -98px 56px 32px 0px ${ COLOR_TRANSPARENT };
+            -35px 20px 24px 0px transparent,
+            -63px 36px 29px 0px transparent,
+            -98px 56px 32px 0px transparent;
         box-sizing: border-box;
         padding: 24px;
         width: ${ SIDEBAR_WIDTH };

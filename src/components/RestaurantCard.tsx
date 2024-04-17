@@ -12,11 +12,10 @@ import {
     COLOR_BLACK,
     COLOR_WHITE,
     COLOR_OFF_WHITE,
-    COLOR_GREY,
+    COLOR_STROKE,
     COLOR_BOX_SHADOW_GREY,
     COLOR_GREEN,
-    COLOR_GREEN_DARK,
-    COLOR_TRANSPARENT,
+    COLOR_GREEN_HOVER,
     COLOR_OVERLAY_WHITE
 } from '../colors.js';
 import { isSet } from '../helpers.js';
@@ -42,13 +41,13 @@ const Wrapper = styled.article<{ animationIndex?: number }>`
     animation-duration: 1s;
     animation-fill-mode: both;
     background-color: ${ COLOR_WHITE };
-    border: 0.6px solid ${ COLOR_GREY };
+    border: 0.6px solid ${ COLOR_STROKE };
     border-radius: 8px;
     box-shadow: -4px 2px 10px 0px ${ COLOR_BOX_SHADOW_GREY },
         -16px 9px 18px 0px ${ COLOR_BOX_SHADOW_GREY },
-        -35px 20px 24px 0px ${ COLOR_TRANSPARENT },
-        -63px 36px 29px 0px ${ COLOR_TRANSPARENT },
-        -98px 56px 32px 0px ${ COLOR_TRANSPARENT };
+        -35px 20px 24px 0px transparent,
+        -63px 36px 29px 0px transparent,
+        -98px 56px 32px 0px transparent;
     display: flex;
     height: 202px;
     justify-content: space-between;
@@ -59,7 +58,7 @@ const Wrapper = styled.article<{ animationIndex?: number }>`
 
     &:hover {
         .arrow-icon {
-            background-color: ${ COLOR_GREEN_DARK };
+            background-color: ${ COLOR_GREEN_HOVER };
         }
 
         .restaurant-img {
@@ -77,7 +76,7 @@ const Wrapper = styled.article<{ animationIndex?: number }>`
 
     &:hover {
         .arrow-icon {
-            background-color: ${ COLOR_GREEN_DARK };
+            background-color: ${ COLOR_GREEN_HOVER };
         }
 
         .restaurant-img {
@@ -135,13 +134,13 @@ const Overlay = styled.div`
 
 const OverlayText = styled.p`
     background-color: ${ COLOR_OFF_WHITE };
-    border: 0.6px solid ${ COLOR_GREY };
+    border: 0.6px solid ${ COLOR_STROKE };
     border-radius: 4px;
     box-shadow: -4px 2px 10px 0px ${ COLOR_BOX_SHADOW_GREY },
         -16px 9px 18px 0px ${ COLOR_BOX_SHADOW_GREY },
-        -35px 20px 24px 0px ${ COLOR_TRANSPARENT },
-        -63px 36px 29px 0px ${ COLOR_TRANSPARENT },
-        -98px 56px 32px 0px ${ COLOR_TRANSPARENT };
+        -35px 20px 24px 0px transparent,
+        -63px 36px 29px 0px transparent,
+        -98px 56px 32px 0px transparent;
     font-size: 12px;
     line-height: 12px;
     padding: 8px 10px;
